@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ComponentInheritanceBenchmarkingThreeLevels" extends="ComponentInheritanceBenchmarkingB">
+	<interface>
+		<field id="c" type="string" />
+		<field id="d" type="integer" />
+	</interface>
+</component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+	<script type="text/brightscript" uri="MainScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/BenchmarkSuite.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/AssociativeArray.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/AsType.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/ComponentCreationSpeed.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/ComponentInheritance.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/Iteration.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/NestedFunctions.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/Operators.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/TypeChecking.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/ValueTypeAccess.brs" />
+	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+	<children>
+		<Timer id="timer" duration="0.5" />
+	</children>
+</component>

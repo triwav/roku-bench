@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ObserverOptions" extends="Node">
+	<script type="text/brightscript" uri="ObserverOptions.brs" />
+	<interface>
+		<field id="commands" type="node" />
+		<field id="command" type="assocarray" />
+		<field id="commandsArray" type="array" value="[]" />
+		<field id="sendCommands" type="bool" alwaysNotify="true" />
+
+		<function name="sendRequest" />
+	</interface>
+</component>
