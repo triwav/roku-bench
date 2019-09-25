@@ -106,7 +106,7 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 		"name": "benchmark to see how AA key length effects create performance"
 		"versions": versions
 		"contextOrContextFunc": Invalid,
-		"iterations": 100000
+		"iterations": 10000
 	}
 
 
@@ -297,7 +297,7 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 		"name": "benchmark to see how AA key length effects read AA performance"
 		"versions": versions
 		"contextOrContextFunc": contextFunc,
-		"iterations": 100000
+		"iterations": 10000
 	}
 
 
@@ -406,7 +406,7 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 		"name": "benchmark to see how AA key length effects write AA performance"
 		"versions": versions
 		"contextOrContextFunc": contextFunc,
-		"iterations": 100000
+		"iterations": 10000
 	}
 
 	return benchmarks

@@ -12,8 +12,6 @@ sub main()
 		"runs": 1
 	}
 
-	BenchmarkSuite_benchmarkAllMainThread(config)
-
 	' Example custom config
 	' benchmarkingConfig = {
 	' 	"config": {
@@ -35,7 +33,9 @@ sub main()
 	' 	}
 	' }
 
-	benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(config)
+	BenchmarkSuite_benchmarkAllMainThread(config)
+
+	benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(benchmarkingConfig)
 	m.global.benchmarkingConfig = benchmarkingConfig
 
 	while true

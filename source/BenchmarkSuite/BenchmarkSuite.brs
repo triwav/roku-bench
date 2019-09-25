@@ -54,9 +54,9 @@ function BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(globalConfig = {} as
 	globalConfig.benchmarkNamePrefix = "RENDER THREAD"
 	config = {
 		"config": globalConfig
-		"nodeBenchmarks": [
-			"BenchmarkCallFuncVsAlternatives"
-		]
+		"nodeBenchmarks": {
+			"BenchmarkCallFuncVsAlternatives": {}
+		}
 		"sections": {}
 	}
 	functions = BenchmarkSuite_getBenchmarkFunctionsMap()
