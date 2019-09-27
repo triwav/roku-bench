@@ -35,7 +35,7 @@ sub main()
 
 	BenchmarkSuite_benchmarkAllMainThread(config)
 
-	benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(benchmarkingConfig)
+	benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(config)
 	m.global.benchmarkingConfig = benchmarkingConfig
 
 	while true
