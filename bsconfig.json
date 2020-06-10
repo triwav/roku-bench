@@ -1,0 +1,7 @@
+{
+	"rootDir": "./",
+	"files": [
+		"(source|components)/**/*.+(xml|brs)",
+		"manifest"
+	]
+}

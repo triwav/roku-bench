@@ -1,4 +1,4 @@
-function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_asTypeBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
@@ -25,6 +25,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": "test string"
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -52,6 +55,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": true,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -79,6 +85,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": 3,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -106,6 +115,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": [1, 2, 3],
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -133,6 +145,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": "test string"
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -160,6 +175,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": true,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -187,6 +205,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": 3,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -214,6 +235,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": [1, 2, 3],
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -241,6 +265,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": "test string"
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -268,6 +295,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": true,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 
@@ -295,6 +325,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": 3,
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 	versions = [
@@ -321,6 +354,9 @@ function BenchmarkSuite_asTypeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": [1, 2, 3],
 		"iterations": 100000
+		"config": {
+			"typeChecking": "loose"
+		}
 	}
 
 	return benchmarks

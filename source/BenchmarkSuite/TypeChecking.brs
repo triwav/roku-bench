@@ -1,4 +1,4 @@
-function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_typeCheckingBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
@@ -11,7 +11,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		}, {
 			"name": "type(n, 3)"
 			"func": function(context)
-				valueType = type(context)
+				valueType = type(context, 3)
 				return (valueType = "String") or (valueType = "roString")
 			end function
 		}, {
@@ -39,7 +39,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		{
 			"name": "type(n)"
 			"func": function(context)
-				return type(value) = "roSGNode"
+				return type(context) = "roSGNode"
 			end function
 		}, {
 			"name": "type(n, 3)"
@@ -70,7 +70,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		{
 			"name": "type(n)"
 			"func": function(context)
-				return type(value) = "roAssociativeArray"
+				return type(context) = "roAssociativeArray"
 			end function
 		}, {
 			"name": "type(n, 3)"
@@ -107,7 +107,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		{
 			"name": "type(n)"
 			"func": function(context)
-				return type(value) = "roArray"
+				return type(context) = "roArray"
 			end function
 		}, {
 			"name": "type(n, 3)"
@@ -130,7 +130,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 	benchmarks["array"] = {
 		"name": "Array type checking"
 		"versions": versions
-		"contextOrContextFunc": context,
+		"contextOrContextFunc": context
 		"iterations": 10000
 	}
 
@@ -147,7 +147,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		}, {
 			"name": "type(n, 3)"
 			"func": function(context)
-				valueType = type(context)
+				valueType = type(context, 3)
 				return (valueType = "Integer") or (valueType = "roInt") or (valueType = "roInteger")
 			end function
 		}, {
@@ -166,7 +166,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 	benchmarks["integer"] = {
 		"name": "Integer type checking"
 		"versions": versions
-		"contextOrContextFunc": context,
+		"contextOrContextFunc": context
 		"iterations": 10000
 	}
 
@@ -175,7 +175,7 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 		{
 			"name": "isAA"
 			"func": function(context)
-				return type(value) = "roAssociativeArray"
+				return type(context) = "roAssociativeArray"
 			end function
 		}, {
 			"name": "isInteger"
@@ -190,16 +190,43 @@ function BenchmarkSuite_typeCheckingBenchmarks(config = {} as Object) as Object
 				return (valueType = "String") or (valueType = "roString")
 			end function
 		}, {
-			"name": "context <> invalid"
+			"name": "context <> Invalid"
 			"func": function(context)
-				return context <> invalid
+				return context <> Invalid
 			end function
 		}
 	]
 	benchmarks["explicitCheckingVsNotInvalidSpeed"] = {
-		"name": "explicit checking vs not invalid speed"
+		"name": "explicit checking vs not Invalid speed"
 		"versions": versions
-		"contextOrContextFunc": invalid,
+		"contextOrContextFunc": Invalid
+		"iterations": 10000
+	}
+
+	versions = [
+		{
+			"name": "context.doesExist(key)"
+			"func": function(context)
+				return context.doesExist("key")
+			end function
+		}, {
+			"name": "context.key <> Invalid"
+			"func": function(context)
+				return context.key <> Invalid
+			end function
+		}
+	]
+	benchmarks["doesExistVsInvalidMiss"] = {
+		"name": "ifAssociativeArray.doesExist vs Invalid (Miss)"
+		"versions": versions
+		"contextOrContextFunc": {}
+		"iterations": 10000
+	}
+
+	benchmarks["doesExistVsInvalidHit"] = {
+		"name": "ifAssociativeArray.doesExist vs Invalid (Hit)"
+		"versions": versions
+		"contextOrContextFunc": {"key": BenchmarkSuite_buildStringContext()}
 		"iterations": 10000
 	}
 

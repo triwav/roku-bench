@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BenchmarkNodeVsAssocArrayThresholdTask" extends="Task">
+	<script type="text/brightscript" uri="BenchmarkNodeVsAssocArrayThresholdTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/BenchmarkSuite.brs" />
+
+	<interface>
+		<field id="command" type="assocarray" alwaysNotify="true" />
+	</interface>
+</component>

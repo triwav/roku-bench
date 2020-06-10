@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BenchmarkNodeRef" extends="NodeBenchmarkBase">
+	<script type="text/brightscript" uri="BenchmarkNodeRef.brs" />
+	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+	<interface>
+		<field id="one" type="string" value="1" />
+		<field id="two" type="string" value="2" />
+		<field id="three" type="string" value="3" />
+		<field id="four" type="string" value="4" />
+		<field id="five" type="string" value="5" />
+		<field id="six" type="string" value="6" />
+		<field id="seven" type="string" value="7" />
+		<field id="eight" type="string" value="8" />
+		<field id="nine" type="string" value="9" />
+		<field id="ten" type="string" value="10" />
+	</interface>
+</component>

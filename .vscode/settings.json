@@ -1,0 +1,14 @@
+{
+	// "brightscript.debug.logfilePath": "${workspaceFolder}/out/benchmarks_output.txt"
+	"brightscript.format.typeCase": "title",
+	"brightscript.format.keywordCaseOverride": {
+		"and": "upper",
+		"or": "upper",
+		"mod": "upper",
+		"not": "upper",
+		"goto": "upper",
+		"function": "lower",
+		"sub": "lower",
+		"invalid": "title",
+	},
+}

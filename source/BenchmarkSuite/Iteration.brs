@@ -37,7 +37,7 @@ function BenchmarkSuite_iterationBenchmarks() as Object
 	benchmarks["forVsForEach"] = {
 		"name": "for vs for each (1k array)"
 		"versions": versions
-		"contextOrContextFunc": context,
+		"contextOrContextFunc": context
 		"iterations": 500
 	}
 
@@ -75,7 +75,7 @@ function BenchmarkSuite_iterationBenchmarks() as Object
 	benchmarks["forVsForEachWithIndex"] = {
 		"name": "for vs for each when index is needed (1k array)"
 		"versions": versions
-		"contextOrContextFunc": context,
+		"contextOrContextFunc": context
 		"iterations": 500
 	}
 
@@ -105,7 +105,7 @@ function BenchmarkSuite_iterationBenchmarks() as Object
 	benchmarks["reverseIteration"] = {
 		"name": "reverse iteration"
 		"versions": versions
-		"contextOrContextFunc": context,
+		"contextOrContextFunc": context
 		"iterations": 500
 	}
 	return benchmarks

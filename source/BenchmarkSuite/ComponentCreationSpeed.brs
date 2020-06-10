@@ -1,111 +1,198 @@
 
 
-sub BenchmarkSuite_runComponentCreationSpeedBenchmarks(config = {} as Object)
-	func = function(context)
-		createObject("roUrlTransfer")
-	end function
-	runSpeedBenchmark("roUrlTransfer", func, invalid, 1000, config)
+function BenchmarkSuite_runComponentCreationSpeedBenchmarks() as Object
+	benchmarks = {}
 
-	func = function(context)
-		createObject("roByteArray")
-	end function
-	runSpeedBenchmark("roByteArray", func, invalid, 1000, config)
-
-	func = function(context)
-		return createObject("roAssociativeArray")
-	end function
-	runSpeedBenchmark("roAssociativeArray create", func, invalid, 1000, config)
+	benchmarks["roUrlTransfer"] = {
+		"func": function(context)
+			createObject("roUrlTransfer")
+		end function
+		"iterations": 1000
+		"config": {
+			"thread": "main"
+		}
+	}
 
 
-	func = function(context)
-		createObject("roChannelStore")
-	end function
-	runSpeedBenchmark("roChannelStore", func, invalid, 1000, config)
+	benchmarks["roByteArray"] = {
+		"func": function(context)
+			createObject("roByteArray")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roDateTime")
-	end function
-	runSpeedBenchmark("roDateTime", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roDeviceInfo")
-	end function
-	runSpeedBenchmark("roDeviceInfo", func, invalid, 1000, config)
+	benchmarks["roAssociativeArray"] = {
+		"func": function(context)
+			createObject("roAssociativeArray")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roEVPCipher")
-	end function
-	runSpeedBenchmark("roEVPCipher", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roEVPDigest")
-	end function
-	runSpeedBenchmark("roEVPDigest", func, invalid, 1000, config)
+	benchmarks["roChannelStore"] = {
+		"func": function(context)
+			createObject("roChannelStore")
+		end function
+		"iterations": 1000
+		"config": {
+			"thread": "main"
+		}
+	}
 
-	func = function(context)
-		createObject("roFileSystem")
-	end function
-	runSpeedBenchmark("roFileSystem", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roHdmiStatus")
-	end function
-	runSpeedBenchmark("roHdmiStatus", func, invalid, 1000, config)
+	benchmarks["roDateTime"] = {
+		"func": function(context)
+			createObject("roDateTime")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roHMAC")
-	end function
-	runSpeedBenchmark("roHMAC", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roHttpAgent")
-	end function
-	runSpeedBenchmark("roHttpAgent", func, invalid, 1000, config)
+	benchmarks["roDeviceInfo"] = {
+		"func": function(context)
+			createObject("roDeviceInfo")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roInput")
-	end function
-	runSpeedBenchmark("roInput", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roLocalization")
-	end function
-	runSpeedBenchmark("roLocalization", func, invalid, 1000, config)
+	benchmarks["roEVPCipher"] = {
+		"func": function(context)
+			createObject("roEVPCipher")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roMessagePort")
-	end function
-	runSpeedBenchmark("roMessagePort", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roMicrophone")
-	end function
-	runSpeedBenchmark("roMicrophone", func, invalid, 1000, config)
+	benchmarks["roEVPCipher"] = {
+		"func": function(context)
+			createObject("roEVPCipher")
+		end function
+		"iterations": 1000
+	}
 
-	' TODO fix
-	' func = function(context)
-	' 	createObject("roRegistrySection")
-	' end function
-	' runSpeedBenchmark("roRegistrySection", func, invalid, 1000, config)
 
-	func = function(context)
-		createObject("roRSA")
-	end function
-	runSpeedBenchmark("roRSA", func, invalid, 1000, config)
+	benchmarks["roEVPDigest"] = {
+		"func": function(context)
+			createObject("roEVPDigest")
+		end function
+		"iterations": 1000
+	}
 
-	func = function(context)
-		createObject("roRegistry")
-	end function
-	runSpeedBenchmark("roRegistry", func, invalid, 1000, config)
 
-	' TODO fix
-	' func = function(context)
-	' 	createObject("roRegex")
-	' end function
-	' runSpeedBenchmark("roRegex", func, invalid, 1000, config)
+	benchmarks["roFileSystem"] = {
+		"func": function(context)
+			createObject("roFileSystem")
+		end function
+		"iterations": 1000
+		"config": {
+			"thread": "main"
+		}
+	}
 
-	func = function(context)
-		createObject("roTimespan")
-	end function
-	runSpeedBenchmark("roTimespan", func, invalid, 1000, config)
-end sub
+
+	benchmarks["roHdmiStatus"] = {
+		"func": function(context)
+			createObject("roHdmiStatus")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roHMAC"] = {
+		"func": function(context)
+			createObject("roHMAC")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roHttpAgent"] = {
+		"func": function(context)
+			createObject("roHttpAgent")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roInput"] = {
+		"func": function(context)
+			createObject("roInput")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roLocalization"] = {
+		"func": function(context)
+			createObject("roLocalization")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roMessagePort"] = {
+		"func": function(context)
+			createObject("roMessagePort")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roMicrophone"] = {
+		"func": function(context)
+			createObject("roMicrophone")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roRegistrySection"] = {
+		func: function(context)
+			createObject("roRegistrySection", "main")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roRegistry"] = {
+		func: function(context)
+			createObject("roRegistry")
+		end function
+		"iterations": 1000
+	}
+
+
+	benchmarks["roRSA"] = {
+		func: function(context)
+			createObject("roRSA")
+		end function
+		"iterations": 1000
+		"config": {
+			"thread": "main"
+		}
+	}
+
+	benchmarks["roRegex"] = {
+		func: function(context)
+			createObject("roRegex", "\[([0-9]+)\]", "i")
+		end function
+		"iterations": 1000
+	}
+
+	benchmarks["roTimespan"] = {
+		func: function(context)
+			createObject("roTimespan")
+		end function
+		"iterations": 1000
+	}
+
+	benchmarks["getGlobalAA"] = {
+		func: function(context)
+			getGlobalAA()
+		end function
+		"iterations": 100000
+	}
+	return benchmarks
+end function

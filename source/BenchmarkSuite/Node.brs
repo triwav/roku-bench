@@ -1,4 +1,4 @@
-function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_nodeBenchmarks() as Object
 	benchmarks = {}
 
 	context = createObject("roSGNode", "Node")
@@ -21,10 +21,13 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		}
 	]
 	benchmarks["createVsCloneNoData"] = {
-		"name": "create node vs clone no data"
+		"name": "Create node vs clone no data"
 		"versions": versions
 		"contextOrContextFunc": context
 		"iterations": 10000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
@@ -38,7 +41,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 			2
 			3
 		]
-	})
+	}, true)
 	versions = [
 		{
 			"name": "clone"
@@ -59,10 +62,13 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		}
 	]
 	benchmarks["createVsCloneWithData"] = {
-		"name": "create node vs clone with data"
+		"name": "Create node vs clone with data"
 		"versions": versions
 		"contextOrContextFunc": context
 		"iterations": 10000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 	versions = [
@@ -83,10 +89,13 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": context
 		"iterations": 10000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
-	contextFunc = function(config = Invalid as Object)
+	contextFunc = function(config = {} as Object)
 		context = createObject("roSGNode", "Node")
 		for i = 0 to 50
 			child = context.createChild("Node")
@@ -131,7 +140,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 				for each node in context.getChildren(-1, 0)
 					if node.id = "0" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}, {
 			"name": "for i = 0 to context.getChildCount() - 1"
@@ -140,7 +149,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 					node = context.getChild(i)
 					if node.id = "0" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}
 	]
@@ -149,6 +158,9 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": contextFunc
 		"iterations": 1000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
@@ -159,7 +171,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 				for each node in context.getChildren(-1, 0)
 					if node.id = "25" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}, {
 			"name": "for i = 0 to context.getChildCount() - 1"
@@ -168,7 +180,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 					node = context.getChild(i)
 					if node.id = "25" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}
 	]
@@ -177,6 +189,9 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": contextFunc
 		"iterations": 1000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
@@ -187,7 +202,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 				for each node in context.getChildren(-1, 0)
 					if node.id = "49" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}, {
 			"name": "for i = 0 to context.getChildCount() - 1"
@@ -196,7 +211,7 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 					node = context.getChild(i)
 					if node.id = "49" then return node
 				end for
-				return invalid
+				return Invalid
 			end function
 		}
 	]
@@ -205,6 +220,105 @@ function BenchmarkSuite_nodeBenchmarks(config = {} as Object) as Object
 		"versions": versions
 		"contextOrContextFunc": contextFunc
 		"iterations": 1000
+		"config": {
+			"typeChecking": "off"
+		}
+	}
+
+	contextFunc = function(config = {} as Object)
+		return createObject("roSGNode", "Node")
+	end function
+
+	versions = [
+		{
+			"name": "createChild"
+			"func": function(context)
+				context.createChild("Node")
+			end function
+		}, {
+			"name": "createObject + appendChild one line"
+			"func": function(context)
+				context.appendChild(createObject("roSGNode", "Node"))
+			end function
+		}, {
+			"name": "createObject + appendChild separate lines"
+			"func": function(context)
+				node = createObject("roSGNode", "Node")
+				context.appendChild(node)
+			end function
+		}
+	]
+	benchmarks["createChildOptions"] = {
+		"name": "Create child options"
+		"versions": versions
+		"contextOrContextFunc": contextFunc
+		"iterations": 2000
+		"config": {
+			"typeChecking": "off"
+		}
+	}
+
+	contextFunc = function(config = {} as Object)
+		nodes = []
+		for i = 0 to config.iterations
+			nodes.push(createObject("roSGNode", "ComponentInheritanceBenchmarkingOneLevel"))
+		end for
+		return nodes
+	end function
+
+	versions = [
+		{
+			"name": "setFields"
+			"func": function(context, i)
+				node = context[i]
+				node.setFields({
+					"a": createObject("roSGNode", "Node")
+					"b": true
+					"c": "c"
+					"d": 1
+				})
+			end function
+		}, {
+			"name": "manual"
+			"func": function(context, i)
+				node = context[i]
+				node.a = createObject("roSGNode", "Node")
+				node.b = true
+				node.c = "c"
+				node.d = 1
+			end function
+		}, {
+			"name": "update with addFields"
+			"func": function(context, i)
+				node = context[i]
+				node.update({
+					"a": createObject("roSGNode", "Node")
+					"b": true
+					"c": "c"
+					"d": 1
+				}, true)
+			end function
+		}, {
+			"name": "update without addFields"
+			"func": function(context, i)
+				node = context[i]
+				node.update({
+					"a": createObject("roSGNode", "Node")
+					"b": true
+					"c": "c"
+					"d": 1
+				})
+			end function
+		}
+	]
+	benchmarks["settingExistingFields4Values"] = {
+		"name": "Setting existing fields options comparison 4 values"
+		"versions": versions
+		"contextOrContextFunc": contextFunc
+		"iterations": 2000
+		"config": {
+			"includeIterationCount": true
+		}
 	}
 
 	return benchmarks

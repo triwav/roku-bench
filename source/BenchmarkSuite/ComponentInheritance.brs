@@ -1,4 +1,4 @@
-function BenchmarkSuite_componentInheritanceBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_componentInheritanceBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
@@ -49,7 +49,7 @@ function BenchmarkSuite_componentInheritanceBenchmarks(config = {} as Object) as
 	benchmarks["settingNodeValues"] = {
 		"name": "Comparison of methods for setting node values"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
+		"contextOrContextFunc": Invalid
 		"iterations": 1000
 	}
 
@@ -119,8 +119,8 @@ function BenchmarkSuite_componentInheritanceBenchmarks(config = {} as Object) as
 	benchmarks["componentInheritancePenalty"] = {
 		"name": "Test to see if component inheritance hurts performance"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
-		"iterations": 1000
+		"contextOrContextFunc": Invalid
+		"iterations": 500
 	}
 
 	return benchmarks

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="NodeBenchmarkBase" extends="Node">
+	<script type="text/brightscript" uri="NodeBenchmarkBase.brs" />
+	<interface>
+		<field id="complete" type="boolean" />
+	</interface>
+</component>

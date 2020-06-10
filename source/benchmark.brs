@@ -3,12 +3,14 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 		"includeIterationCount": false
 		"runs": 1
 		"iterationMultiplier": 1.0
+		"typeChecking": "on"
 	}
 	config.append(additionalConfig)
 	iterations = fix(config.iterationMultiplier * iterations)
 
-	if config.benchmarkNamePrefix <> Invalid then
-		name = config.benchmarkNamePrefix + ": " + name
+	prefix = config.benchmarkNamePrefix
+	if prefix <> Invalid then
+		name = prefix + ": " + name
 	end if
 
 	details = createObject("roDeviceInfo").getModelDetails()
@@ -16,12 +18,28 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 	firmwareVersion = createObject("roDeviceInfo").getVersion().mid(2, 3)
 	print
 	print "----- " name " (" iterations " iterations on " modelDescription " v" + firmwareVersion + ") -------------------------"
+	thread = additionalConfig.thread
+	if thread <> Invalid then
+		isRenderThread = m.top <> Invalid
+		if isRenderThread then
+			correctThread = (thread = "render")
+		else
+			correctThread = (thread <> "render")
+		end if
+
+		if NOT correctThread
+			print "Skipping benchmark as benchmark requested " thread " thread"
+			print
+			return
+		end if
+	end if
 
 	t = createObject("roTimespan")
 	for r = 1 to config.runs
 		if config.runs > 1 then print "Run" r
 		fastest = Invalid
 		secondFastest = Invalid
+		lastVersionOutput = "nil"
 		for each version in versions
 			if type(contextOrContextFunc, 3) = "Function" then
 				config.iterations = iterations
@@ -30,20 +48,52 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 			else
 				context = contextOrContextFunc
 			end if
-			t.mark()
 			if config.includeIterationCount then
+				t.mark()
 				for i = 0 to (iterations - 1)
-					version.func(context, i)
+					output = version.func(context, i)
 				end for
 			else
+				t.mark()
 				for i = 0 to (iterations - 1)
-					version.func(context)
+					versionOutput = version.func(context)
 				end for
 			end if
 			version.duration = t.totalMilliseconds()
 			print version.name " ====> took: " version.duration "ms total /" version.duration / iterations "ms per call"
 
-			if fastest = Invalid or fastest.duration >= version.duration then
+			typeChecking = config.typeChecking
+			if typeChecking = "on" OR typeChecking = "loose" then
+				if typeChecking = "loose" then
+					lastVersionOutputType = type(box(lastVersionOutput))
+					versionOutputType = type(box(versionOutput))
+				else
+					lastVersionOutputType = type(lastVersionOutput)
+					versionOutputType = type(versionOutput)
+				end if
+
+				isString = (lastVersionOutputType = "String" OR lastVersionOutputType = "roString")
+
+				failedMatchCheck = false
+				if isString AND lastVersionOutput = "nil" then
+					failedMatchCheck = false
+				else if versionOutputType <> lastVersionOutputType then
+					failedMatchCheck = true
+				else if formatJson([versionOutput]) <> formatJson([lastVersionOutput]) then
+					failedMatchCheck = true
+				end if
+
+				if failedMatchCheck then
+					print "VERSION OUTPUT for '" version.name "' with value: '" versionOutput "' DID NOT MATCH previous value of '" lastVersionOutput "'!!!!!!!!!!!!!!!!!!!!!!!!"
+					return
+				end if
+				lastVersionOutput = versionOutput
+			else if typeChecking <> "off" then
+				print "invalid value specified for typeChecking!!!!!!!!!!!!!!!!!!!!!!!!"
+				return
+			end if
+
+			if fastest = Invalid OR fastest.duration >= version.duration then
 				fastest = version
 			end if
 		end for
@@ -59,7 +109,6 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 			end if
 		end for
 		print
-		print
 	end for
 end sub
 
@@ -73,8 +122,9 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 	config.append(additionalConfig)
 	iterations = fix(config.iterationMultiplier * iterations)
 
-	if config.benchmarkNamePrefix <> Invalid then
-		name = config.benchmarkNamePrefix + ": " + name
+	prefix = config.benchmarkNamePrefix
+	if prefix <> Invalid then
+		name = prefix + ": " + name
 	end if
 
 	details = createObject("roDeviceInfo").getModelDetails()
@@ -82,6 +132,21 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 	firmwareVersion = createObject("roDeviceInfo").getVersion().mid(2, 3)
 	print
 	print "----- " name " (" iterations " iterations on " modelDescription " v" + firmwareVersion + ") -------------------------"
+	thread = additionalConfig.thread
+	if thread <> Invalid then
+		isRenderThread = m.top <> Invalid
+		if isRenderThread then
+			correctThread = (thread = "render")
+		else
+			correctThread = (thread <> "render")
+		end if
+
+		if NOT correctThread
+			print "Skipping benchmark as benchmark requested " thread " thread"
+			print
+			return
+		end if
+	end if
 	t = createObject("roTimespan")
 	for r = 1 to config.runs
 		if config.runs > 1 then print "Run" r

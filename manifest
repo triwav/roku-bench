@@ -4,3 +4,8 @@ minor_version=0
 build_version=0
 
 rsg_version=1.2
+
+
+logSections=registry:0,network:0,other:0
+logLevels=0:off,1:error,2:warn,3:info,4:debug,5:verbose
+logLevel=5

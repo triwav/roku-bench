@@ -1,4 +1,4 @@
-function BenchmarkSuite_nestedFunctionBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_nestedFunctionBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
@@ -54,10 +54,10 @@ function BenchmarkSuite_nestedFunctionBenchmarks(config = {} as Object) as Objec
 			end function
 		}
 	]
-	benchmarks["typelessVsTypedObjectReturn"] = {
+	benchmarks["nestedFunctions"] = {
 		"name": "Test to see if nested functions hurt performance the same amount"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
+		"contextOrContextFunc": Invalid
 		"iterations": 50000
 	}
 

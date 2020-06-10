@@ -5,7 +5,6 @@ sub init()
 	m.top.observeFieldScoped("command", m.port)
 	m.top.observeFieldScoped("sendCommands", "onSendCommands")
 	m.top.observeFieldScoped("commandsArray", "onCommandsArrayChanged")
-
 end sub
 
 sub onCommandsChangeChanged()

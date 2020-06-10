@@ -70,7 +70,7 @@ function BenchmarkSuite_valueTypeAccessBenchmarks() as Object
 	benchmarks["aaWriteOptions"] = {
 		"name": "AA write options"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
+		"contextOrContextFunc": Invalid
 		"iterations": 10000
 	}
 
@@ -107,8 +107,11 @@ function BenchmarkSuite_valueTypeAccessBenchmarks() as Object
 	benchmarks["createAA"] = {
 		"name": "Create AA"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
-		"iterations": 10000
+		"contextOrContextFunc": Invalid
+		"iterations": 50000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
@@ -143,8 +146,8 @@ function BenchmarkSuite_valueTypeAccessBenchmarks() as Object
 	benchmarks["aaVsNodeRead"] = {
 		"name": "AA vs Node Read Speed"
 		"versions": versions
-		"contextOrContextFunc": contextFunc,
-		"iterations": 10000
+		"contextOrContextFunc": contextFunc
+		"iterations": 2000
 	}
 
 	' BENCHMARK IDEA: node write speed comparison
@@ -194,7 +197,7 @@ function BenchmarkSuite_valueTypeAccessBenchmarks() as Object
 	benchmarks["aaVsArrayRead"] = {
 		"name": "AA vs Array Read"
 		"versions": versions
-		"contextOrContextFunc": contextFunc,
+		"contextOrContextFunc": contextFunc
 		"iterations": 25000
 	}
 	return benchmarks

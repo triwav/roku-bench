@@ -1,4 +1,4 @@
-function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Object
+function BenchmarkSuite_associativeArrayBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
@@ -105,8 +105,11 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 	benchmarks["creationKeyLengthEffect"] = {
 		"name": "benchmark to see how AA key length effects create performance"
 		"versions": versions
-		"contextOrContextFunc": Invalid,
+		"contextOrContextFunc": invalid
 		"iterations": 10000
+		"config": {
+			"typeChecking": "off"
+		}
 	}
 
 
@@ -114,81 +117,81 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 		versionName = config.version.name
 		if versionName = "1 character length keys" then
 			return {
-					"a": "a"
-					"b": "b"
-					"c": "c"
-					"d": "d"
-					"e": "e"
-					"f": "f"
-					"g": "g"
-					"h": "h"
-				}
+				"a": "a"
+				"b": "b"
+				"c": "c"
+				"d": "d"
+				"e": "e"
+				"f": "f"
+				"g": "g"
+				"h": "h"
+			}
 		else if versionName = "2 character length keys" then
 			return {
-					"aa": "a"
-					"bb": "b"
-					"cc": "c"
-					"dd": "d"
-					"ee": "e"
-					"ff": "f"
-					"gg": "g"
-					"hh": "h"
-				}
+				"aa": "a"
+				"bb": "b"
+				"cc": "c"
+				"dd": "d"
+				"ee": "e"
+				"ff": "f"
+				"gg": "g"
+				"hh": "h"
+			}
 		else if versionName = "3 character length keys" then
 			return {
-					"aaa": "a"
-					"bbb": "b"
-					"ccc": "c"
-					"ddd": "d"
-					"eee": "e"
-					"fff": "f"
-					"ggg": "g"
-					"hhh": "h"
-				}
+				"aaa": "a"
+				"bbb": "b"
+				"ccc": "c"
+				"ddd": "d"
+				"eee": "e"
+				"fff": "f"
+				"ggg": "g"
+				"hhh": "h"
+			}
 		else if versionName = "4 character length keys" then
 			return {
-					"aaaa": "a"
-					"bbbb": "b"
-					"cccc": "c"
-					"dddd": "d"
-					"eeee": "e"
-					"ffff": "f"
-					"gggg": "g"
-					"hhhh": "h"
-				}
+				"aaaa": "a"
+				"bbbb": "b"
+				"cccc": "c"
+				"dddd": "d"
+				"eeee": "e"
+				"ffff": "f"
+				"gggg": "g"
+				"hhhh": "h"
+			}
 		else if versionName = "5 character length keys" then
 			return {
-					"aaaaa": "a"
-					"bbbbb": "b"
-					"ccccc": "c"
-					"ddddd": "d"
-					"eeeee": "e"
-					"fffff": "f"
-					"ggggg": "g"
-					"hhhhh": "h"
-				}
+				"aaaaa": "a"
+				"bbbbb": "b"
+				"ccccc": "c"
+				"ddddd": "d"
+				"eeeee": "e"
+				"fffff": "f"
+				"ggggg": "g"
+				"hhhhh": "h"
+			}
 		else if versionName = "10 character length keys" then
 			return {
-					"aaaaaaaaaa": "a"
-					"bbbbbbbbbb": "b"
-					"cccccccccc": "c"
-					"dddddddddd": "d"
-					"eeeeeeeeee": "e"
-					"ffffffffff": "f"
-					"gggggggggg": "g"
-					"hhhhhhhhhh": "h"
-				}
+				"aaaaaaaaaa": "a"
+				"bbbbbbbbbb": "b"
+				"cccccccccc": "c"
+				"dddddddddd": "d"
+				"eeeeeeeeee": "e"
+				"ffffffffff": "f"
+				"gggggggggg": "g"
+				"hhhhhhhhhh": "h"
+			}
 		else if versionName = "20 character length keys" then
 			return {
-					"aaaaaaaaaaaaaaaaaaaa": "a"
-					"bbbbbbbbbbbbbbbbbbbb": "b"
-					"cccccccccccccccccccc": "c"
-					"dddddddddddddddddddd": "d"
-					"eeeeeeeeeeeeeeeeeeee": "e"
-					"ffffffffffffffffffff": "f"
-					"gggggggggggggggggggg": "g"
-					"hhhhhhhhhhhhhhhhhhhh": "h"
-				}
+				"aaaaaaaaaaaaaaaaaaaa": "a"
+				"bbbbbbbbbbbbbbbbbbbb": "b"
+				"cccccccccccccccccccc": "c"
+				"dddddddddddddddddddd": "d"
+				"eeeeeeeeeeeeeeeeeeee": "e"
+				"ffffffffffffffffffff": "f"
+				"gggggggggggggggggggg": "g"
+				"hhhhhhhhhhhhhhhhhhhh": "h"
+			}
 		end if
 	end function
 
@@ -291,12 +294,12 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 				concatString += context.hhhhhhhhhhhhhhhhhhhh
 				return concatString
 			end function
-		},
+		}
 	]
 	benchmarks["readKeyLengthEffect"] = {
 		"name": "benchmark to see how AA key length effects read AA performance"
 		"versions": versions
-		"contextOrContextFunc": contextFunc,
+		"contextOrContextFunc": contextFunc
 		"iterations": 10000
 	}
 
@@ -400,13 +403,39 @@ function BenchmarkSuite_associativeArrayBenchmarks(config = {} as Object) as Obj
 				aa.hhhhhhhhhhhhhhhhhhhh = "h"
 				return aa
 			end function
-		},
+		}
 	]
 	benchmarks["writeKeyLengthEffect"] = {
 		"name": "benchmark to see how AA key length effects write AA performance"
 		"versions": versions
-		"contextOrContextFunc": contextFunc,
+		"contextOrContextFunc": contextFunc
 		"iterations": 10000
+		"config": {
+			"typeChecking": "off"
+		}
+	}
+
+
+	versions = [
+		{
+			"name": "{}"
+			"func": function(context)
+				return {}
+			end function
+		}, {
+			"name": "{} + setModeCaseSensitive"
+			"func": function(context)
+				aa = {}
+				aa.setModeCaseSensitive()
+				return aa
+			end function
+		}
+	]
+	benchmarks["setModeCaseSensitiveCost"] = {
+		"name": "setModeCaseSensitive cost"
+		"versions": versions
+		"contextOrContextFunc": invalid
+		"iterations": 100000
 	}
 
 	return benchmarks

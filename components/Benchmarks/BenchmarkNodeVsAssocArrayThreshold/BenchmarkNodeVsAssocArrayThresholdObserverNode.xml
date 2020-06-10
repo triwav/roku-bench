@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BenchmarkNodeVsAssocArrayThresholdObserverNode" extends="Node">
+	<script type="text/brightscript" uri="BenchmarkNodeVsAssocArrayThresholdObserverNode.brs" />
+
+	<interface>
+		<field id="aaObserver" type="assocarray" />
+		<field id="nodeObserver" type="node" />
+	</interface>
+</component>

@@ -12,6 +12,10 @@ sub main()
 		"runs": 1
 	}
 
+	' Short circuit for writing or testing specific benchmark
+	' BenchmarkSuite_runSectionBenchmarks(BenchmarkSuite_typeConversionBenchmarks(), config, [])
+	' return
+
 	' Example custom config
 	' benchmarkingConfig = {
 	' 	"config": {
@@ -39,9 +43,9 @@ sub main()
 	m.global.benchmarkingConfig = benchmarkingConfig
 
 	while true
-		msg = port.getMessage()
+		message = port.getMessage()
 
-        if type(msg) = "roSGNodeEvent" and msg.getField() = "exitApplication" then
+        if type(message) = "roSGNodeEvent" and message.getField() = "exitApplication" then
 			return
 		end if
 	end while

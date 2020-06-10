@@ -1,27 +1,27 @@
-function BenchmarkSuite_isEmptyBenchmarks() as Object
+function BenchmarkSuite_isNotEmptyBenchmarks() as Object
 	benchmarks = {}
 
 	versions = [
 		{
-			"name": "isEmpty()"
+			"name": "NOT isEmpty()"
 			"func": function(context)
-				return context.isEmpty()
+				return NOT context.isEmpty()
 			end function
 		}, {
-			"name": "count() = 0"
+			"name": "count() > 0"
 			"func": function(context)
-				return context.count() = 0
+				return context.count() > 0
 			end function
 		}
 	]
-	benchmarks["array empty"] = {
+	benchmarks["arrayEmpty"] = {
 		"name": "empty array"
 		"versions": versions
 		"contextOrContextFunc": []
 		"iterations": 100000
 	}
 
-	benchmarks["arrayEmpty"] = {
+	benchmarks["arrayNonempty"] = {
 		"name": "nonempty array"
 		"versions": versions
 		"contextOrContextFunc": BenchmarkSuite_buildArrayContext
@@ -31,14 +31,14 @@ function BenchmarkSuite_isEmptyBenchmarks() as Object
 
 	versions = [
 		{
-			"name": "isEmpty()"
+			"name": "NOT isEmpty()"
 			"func": function(context)
-				return context.isEmpty()
+				return NOT context.isEmpty()
 			end function
 		}, {
-			"name": "count() = 0"
+			"name": "count() > 0"
 			"func": function(context)
-				return context.count() = 0
+				return context.count() > 0
 			end function
 		}
 	]
@@ -58,19 +58,14 @@ function BenchmarkSuite_isEmptyBenchmarks() as Object
 
 	versions = [
 		{
-			"name": "len() = 0"
+			"name": "len() > 0"
 			"func": function(context)
-				return context.len() = 0
+				return context.len() > 0
 			end function
 		}, {
-			"name": "= " + chr(34) + chr(34)
+			"name": "<> " + chr(34) + chr(34)
 			"func": function(context)
-				return context = ""
-			end function
-		}, {
-			"name": "isEmpty()"
-			"func": function(context)
-				return context.isEmpty()
+				return context <> ""
 			end function
 		}
 	]

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BenchmarkNodeVsAssocArrayThreshold" extends="NodeBenchmarkBase">
+	<script type="text/brightscript" uri="BenchmarkNodeVsAssocArrayThreshold.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/BenchmarkSuite.brs" />
+	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+</component>
