@@ -147,5 +147,31 @@ function BenchmarkSuite_operatorBenchmarks() as Object
 		"iterations": 1000
 	}
 
+	versions = [
+		{
+			"name": "equalsTrue"
+			"func": function(context)
+				for _ = 0 to 1000
+					value = (true = true)
+				end for
+				return value
+			end function
+		}, {
+			"name": "implicit"
+			"func": function(context)
+				for _ = 0 to 1000
+					value = true
+				end for
+				return value
+			end function
+		}
+	]
+	benchmarks["equalsTrueVsImplicit"] = {
+		"name": "equalsTrueVsImplicit"
+		"versions": versions
+		"contextOrContextFunc": Invalid
+		"iterations": 1000
+	}
+
 	return benchmarks
 end function

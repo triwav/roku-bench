@@ -2,5 +2,6 @@
 <component name="BenchmarkCallFuncVsAlternatives" extends="NodeBenchmarkBase">
 	<script type="text/brightscript" uri="BenchmarkCallFuncVsAlternatives.brs" />
 	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/BenchmarkSuite.brs" />
 	<script type="text/brightscript" uri="pkg:/source/libs/promise.brs" />
 </component>

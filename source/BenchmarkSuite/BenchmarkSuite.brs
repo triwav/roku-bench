@@ -8,6 +8,7 @@ function BenchmarkSuite_getBenchmarkFunctionsMap() as Object
 		"isNotEmpty": BenchmarkSuite_isNotEmptyBenchmarks
 		"iteration": BenchmarkSuite_iterationBenchmarks
 		"nestedFunctions": BenchmarkSuite_nestedFunctionBenchmarks
+		"functionTypeComparison": BenchmarkSuite_functionTypeComparisonBenchmarks
 		"node": BenchmarkSuite_nodeBenchmarks
 		"operators": BenchmarkSuite_operatorBenchmarks
 		"rokuInterfaces": BenchmarkSuite_rokuInterfacesBenchmarks
@@ -64,6 +65,7 @@ function BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(globalConfig = {} as
 			"BenchmarkCallFuncVsAlternatives": {}
 			"BenchmarkNodeRef": {}
 			"BenchmarkNodeVsAssocArrayThreshold": {}
+			BenchmarkPredefinedContentNodeFieldVsNot : {}
 		}
 		"sections": {}
 	}

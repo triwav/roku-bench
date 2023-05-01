@@ -9,37 +9,40 @@ sub main()
 
 	config = {
 		"iterationMultiplier": 1
-		"runs": 1
+		"runs": 3
 	}
 
 	' Short circuit for writing or testing specific benchmark
-	' BenchmarkSuite_runSectionBenchmarks(BenchmarkSuite_typeConversionBenchmarks(), config, [])
+	' BenchmarkSuite_runSectionBenchmarks(BenchmarkSuite_runComponentCreationSpeedBenchmarks(), config, [])
 	' return
 
 	' Example custom config
-	' benchmarkingConfig = {
-	' 	"config": {
-	' 		"iterationMultiplier": 1
-	' 		"runs": 3
-	' 	}
-	' 	"sections": {
-	' 		"typeChecking": {
-	' 			"config": {}
-	' 			"benchmarksToRun": {
-	' 				"node": {}
-	' 				"array": {}
-	' 				"string": {}
-	' 			}
-	' 		}
-	' 	}
-	' 	"nodeBenchmarks": {
-	' 		"BenchmarkCallFuncVsAlternatives": {}
-	' 	}
-	' }
+	benchmarkingConfig = {
+		"config": {
+			"iterationMultiplier": 1
+			"runs": 3
+		}
+		"sections": {
+			' "typeChecking": {
+			' 	"config": {}
+			' 	"benchmarksToRun": {
+					' "node": {}
+					' "array": {}
+					' "string": {}
+			' 	}
+			' }
+			' "functionTypeComparison": {}
+			' "isEmpty": {}
+		}
+		"nodeBenchmarks": {
+			"BenchmarkPredefinedContentNodeFieldVsNot": {}
+			' "BenchmarkTaskSetup": {}
+		}
+	}
 
-	BenchmarkSuite_benchmarkAllMainThread(config)
+	' BenchmarkSuite_benchmarkAllMainThread(config)
 
-	benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(config)
+	' benchmarkingConfig = BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(config)
 	m.global.benchmarkingConfig = benchmarkingConfig
 
 	while true

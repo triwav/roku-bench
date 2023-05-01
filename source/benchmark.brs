@@ -4,6 +4,8 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 		"runs": 1
 		"iterationMultiplier": 1.0
 		"typeChecking": "on"
+		' TODO finish support
+		"operationCount": 1 ' If you did a loop or multiple operations in your benchmark you can provide this to give a truer picture of how long a single operation would take
 	}
 	config.append(additionalConfig)
 	iterations = fix(config.iterationMultiplier * iterations)
@@ -60,7 +62,9 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 				end for
 			end if
 			version.duration = t.totalMilliseconds()
-			print version.name " ====> took: " version.duration "ms total /" version.duration / iterations "ms per call"
+			timeForSingleCall = version.duration / iterations
+			opsPerSecond = 1000 / timeForSingleCall * config.operationCount
+			print version.name " ====> took: " version.duration "ms total /" opsPerSecond "ops/sec"
 
 			typeChecking = config.typeChecking
 			if typeChecking = "on" OR typeChecking = "loose" then
@@ -105,7 +109,7 @@ sub runComparisonBenchmark(name as String, versions as Object, contextOrContextF
 				timeDiff = version.duration - fastest.duration
 				percent = 0
 				if fastest.duration > 0 then percent = timeDiff / fastest.duration * 100
-				print "'" fastest.name "' was faster than '" version.name "' by " timeDiff "ms " percent "% and will save " timeDiff / iterations "ms per call"
+				print "'" fastest.name "' was faster than '" version.name "' by" timeDiff "ms" percent "% and will save" timeDiff / iterations "ms per call"
 			end if
 		end for
 		print
@@ -118,6 +122,8 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 		"includeIterationCount": false
 		"runs": 1
 		"iterationMultiplier": 1.0
+		' TODO finish support
+		"operationCount": 1 ' If you did a loop or multiple operations in your benchmark you can provide this to give a truer picture of how long a single operation would take
 	}
 	config.append(additionalConfig)
 	iterations = fix(config.iterationMultiplier * iterations)
@@ -131,7 +137,12 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 	modelDescription = details.vendorName + " " + details.modelNumber
 	firmwareVersion = createObject("roDeviceInfo").getVersion().mid(2, 3)
 	print
-	print "----- " name " (" iterations " iterations on " modelDescription " v" + firmwareVersion + ") -------------------------"
+	printStatement = "----- " + name + " (" + iterations.toStr() + " iterations"
+	if config.operationCount > 1 then
+		printStatement += " /" + config.operationCount.toStr() + " operations"
+	end if
+	print  printStatement " on " modelDescription " v" + firmwareVersion + ") -------------------------"
+
 	thread = additionalConfig.thread
 	if thread <> Invalid then
 		isRenderThread = m.top <> Invalid
@@ -153,7 +164,6 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 
 		if type(contextOrContextFunc, 3) = "Function" then
 			config.iterations = iterations
-			config.version = version
 			context = contextOrContextFunc(config)
 		else
 			context = contextOrContextFunc
@@ -184,7 +194,9 @@ sub runSpeedBenchmark(name as String, functionToBenchmark as Function, contextOr
 		end if
 		loopDuration = t.totalMilliseconds()
 		duration = totalDuration - loopDuration
-		print "took: " duration "ms total /" duration / iterations "ms per call"
+		timeForSingleCall = duration / iterations
+		opsPerSecond = 1000 / timeForSingleCall * config.operationCount
+		print name " ====> took: " duration "ms total /" opsPerSecond "ops/sec"
 
 		print
 		print

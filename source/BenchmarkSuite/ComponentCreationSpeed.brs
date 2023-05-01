@@ -56,6 +56,14 @@ function BenchmarkSuite_runComponentCreationSpeedBenchmarks() as Object
 		"iterations": 1000
 	}
 
+	benchmarks["roDeviceInfoCached"] = {
+		"func": function(context)
+			if m.__deviceInfo = Invalid then m.__deviceInfo = createObject("roDeviceInfo")
+			return m.__deviceInfo
+		end function
+		"iterations": 1000
+	}
+
 
 	benchmarks["roEVPCipher"] = {
 		"func": function(context)

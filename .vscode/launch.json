@@ -9,7 +9,9 @@
 		"request": "launch",
 		"name": "DEVICE PROMPT",
 		"stopOnEntry": false,
-		"host": "${promptForHost}",
+		"envFile": "${workspaceFolder}/.env",
+		"host": "${env:LAUNCH_HOST_OVERRIDE}",
+		"password": "${env:ROKU_PASSWORD}",
 		"consoleOutput": "normal",
 		"enableDebuggerAutoRecovery": true,
 		"files": [

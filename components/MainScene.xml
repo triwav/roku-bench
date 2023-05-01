@@ -11,6 +11,7 @@
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/IsNotEmpty.brs" />
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/Iteration.brs" />
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/NestedFunctions.brs" />
+	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/FunctionTypeComparison.brs" />
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/Node.brs" />
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/Operators.brs" />
 	<script type="text/brightscript" uri="pkg:/source/BenchmarkSuite/RokuInterfaces.brs" />

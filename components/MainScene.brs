@@ -1,13 +1,19 @@
 sub init()
 	m.benchmarkFunctions = BenchmarkSuite_getBenchmarkFunctionsMap()
 
+	bigAA = {}
+	for i = 0 to 100
+		bigAA[i.toStr()] = BenchmarkSuite_buildStringContext()
+	end for
+
 	m.global.addFields({
 		"benchmarkingConfig": {}
 		"exitApplication": false
 		"boolean": true
 		"string": "HD"
 		"integer": 1
-		"float": 1.0
+		"float": 1.0,
+		"bigAA": bigAA
 	})
 
 	m.global.observeFieldScoped("benchmarkingConfig", "onBenchmarkingConfigChanged")

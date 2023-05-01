@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CallFuncNode" extends="Node">
+	<script type="text/brightscript" uri="CallFuncNode.brs" />
+	<interface>
+		<function name="addTwoNumbers" />
+	</interface>
+</component>

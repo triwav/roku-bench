@@ -1,5 +1,5 @@
 sub init()
-	iterations = 200
+	iterations = 199
 	versions = [
 		{
 			"name": "observeFieldScoped"
@@ -34,21 +34,34 @@ sub init()
 	versions = [
 		{
 			"name": "observeField"
-			"func": function(context, i)
-				node = context[i]
-				node.observeField("output", "onNodeOutputChanged")
-				node.output = true
+			"func": function(context)
+				node = createObject("roSgNode", "ObserveField")
+				for i = 0 to 200
+					node.fire = true
+				end for
+				return node.output
 			end function
 		}, {
 			"name": "observeFieldScoped"
-			"func": function(context, i)
-				node = context[i]
-				node.observeFieldScoped("output", "onNodeOutputChanged")
-				node.output = true
+			"func": function(context)
+				node = createObject("roSgNode", "ObserveFieldScoped")
+				for i = 0 to 200
+					node.fire = true
+				end for
+				return node.output
+			end function
+		}, {
+			"name": "onChange"
+			"func": function(context)
+				node = createObject("roSgNode", "OnChange")
+				for i = 0 to 200
+					node.fire = true
+				end for
+				return node.output
 			end function
 		}
 	]
-	runComparisonBenchmark("observeFieldScoped vs observeField", versions, contextFunc, iterations, {"includeIterationCount": true})
+	runComparisonBenchmark("observeFieldScoped vs observeField vs onChange", versions, Invalid, iterations)
 
 	versions = [
 		{

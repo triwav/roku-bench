@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BenchmarkPredefinedContentNodeFieldVsNot" extends="NodeBenchmarkBase">
+	<script type="text/brightscript" uri="BenchmarkPredefinedContentNodeFieldVsNot.brs" />
+	<script type="text/brightscript" uri="pkg:/source/benchmark.brs" />
+</component>

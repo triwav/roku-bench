@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="RetainCycleTester" extends="Node">
+	<script type="text/brightscript" uri="RetainCycleTester.brs" />
+	<interface>
+		<field id="label" type="string" />
+		<field id="duration" alias="timer.duration" value="0.1" />
+	</interface>
+	<children>
+		<Timer id="timer" repeat="true" control="start" />
+	</children>
+</component>
