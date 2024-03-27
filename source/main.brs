@@ -33,9 +33,10 @@ sub main()
 			' }
 			' "functionTypeComparison": {}
 			' "isEmpty": {}
+			"string": {}
 		}
 		"nodeBenchmarks": {
-			"BenchmarkPredefinedContentNodeFieldVsNot": {}
+			' "BenchmarkPredefinedContentNodeFieldVsNot": {}
 			' "BenchmarkTaskSetup": {}
 		}
 	}

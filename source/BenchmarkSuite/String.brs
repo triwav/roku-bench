@@ -230,5 +230,24 @@ versions = [{
 		"iterations": 5000
 	}
 
+
+	versions = [{
+		"name": "split"
+		"func": function(context)
+			return context.split(".")
+		end function
+	}, {
+		"name": "tokenize"
+		"func": function(context)
+			return context.tokenize(".").toArray()
+		end function
+	}]
+	benchmarks["tokenizeVsSplit"] = {
+		"name": "Tokenize vs Split"
+		"versions": versions
+		"contextOrContextFunc": "controller.authManager.user.email.domain"
+		"iterations": 5000
+	}
+
 	return benchmarks
 end function
