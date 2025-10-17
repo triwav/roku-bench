@@ -65,7 +65,7 @@ function BenchmarkSuite_buildRenderThreadBenchmarkAllConfig(globalConfig = {} as
 			"BenchmarkCallFuncVsAlternatives": {}
 			"BenchmarkNodeRef": {}
 			"BenchmarkNodeVsAssocArrayThreshold": {}
-			BenchmarkPredefinedContentNodeFieldVsNot : {}
+			"BenchmarkPredefinedContentNodeFieldVsNot": {}
 		}
 		"sections": {}
 	}

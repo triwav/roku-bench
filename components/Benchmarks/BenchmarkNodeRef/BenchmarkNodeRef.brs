@@ -1,7 +1,7 @@
 sub init()
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -60,7 +60,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -91,7 +91,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -120,7 +120,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -147,7 +147,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -172,7 +172,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "topRef"
 			"func": function(context)
 				m = getGlobalAA()
 				topRef = m.top
@@ -195,7 +195,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "globalRef"
 			"func": function(context)
 				m = getGlobalAA()
 				globalRef = m.global
@@ -228,7 +228,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "globalRef"
 			"func": function(context)
 				m = getGlobalAA()
 				globalRef = m.global
@@ -259,7 +259,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "globalRef"
 			"func": function(context)
 				m = getGlobalAA()
 				globalRef = m.global
@@ -288,7 +288,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "globalRef"
 			"func": function(context)
 				m = getGlobalAA()
 				globalRef = m.global
@@ -315,7 +315,7 @@ sub init()
 
 	versions = [
 		{
-			"name": "m.topRef"
+			"name": "globalRef"
 			"func": function(context)
 				m = getGlobalAA()
 				globalRef = m.global
